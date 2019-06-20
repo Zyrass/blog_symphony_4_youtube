@@ -1,0 +1,51 @@
+Commande EMMET :
+(article>h2[Titre de l'article}+div.metadata{Ecrit le 21/06/2019 à 1h21 dans la catégorie Apprentissage}+div.content>img+(p>lorem15)*2+a.btn.btn-primary{Lire la suite})*3
+
+CLI = Command Line Interface.
+Les 3 pilliers de Symfony 
+    1 Les Controllers pour gérer les traitements
+    2 Doctrine pour l'accès aux données
+    3 Twig Langage de rendu
+
+Langage de rendu Twig
+    Simplicité
+        - Facilite l'écriture des affichages
+        - Apporte beaucoup de fonctionnalités
+    Absence de php
+        - Permet d'abstraire les affichages de balise php
+        - Plus simple pour un intégrateur
+
+        Interpolation avec les doubles accolades {{ variable }}
+            Affiche le contenu d'une variable
+            <h1>{{ title }}</h1>
+
+            A utiliser dans la route.
+
+        Commandes {% cmd %}
+            Permet d'appeler une commande / Structure de contrôle
+            {% if age > 18 %}
+                <p>Tu es majeur</p>  
+            {% else %}
+                <p>Tu es mineur</p>
+            {% endif %}
+
+        {% extends 'base.html.twig' %}
+        {% block body %}
+            // code qui sera compris dans le body
+        {% endblock %}
+
+-Intitialiser un projet dans le dossier demo.
+    composer create-project symfony/website-skeleton demo
+
+-Installation du server permettant de lancer le projet.
+    composer require server --dev
+
+-Lancer le server
+    php bin/console server:run
+
+-Créer une route avec la console    
+    php bin/console make:controller
+
+    -Nommer le controller exemple :
+        BlogController
+

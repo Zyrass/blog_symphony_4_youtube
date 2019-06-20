@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salut BlogController!{% endblock %}
+
+{% block body %}
+    <section class="articles">
+        <article>
+            <h2>Titre de l'article</h2>
+            <div class="metadata">Ecrit le 21/06/2019 à 1h21 dans la catégorie Apprentissage</div>
+            <div class="content">
+                <img src="http://placehold.it/350x150" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque hic corrupti cumque reprehenderit provident vel!</p>
+                <p>Cumque iure sequi porro labore enim! Labore omnis pariatur vitae voluptatum facere sit, doloribus itaque.</p>
+                <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </article>
+        <article>
+            <h2>Titre de l'article</h2>
+            <div class="metadata">Ecrit le 21/06/2019 à 1h21 dans la catégorie Apprentissage</div>
+            <div class="content">
+                <img src="http://placehold.it/350x150" alt="">
+                <p>Alias minus nihil non, quaerat hic doloribus laudantium officiis accusamus magni fugit at sed voluptas?</p>
+                <p>Ducimus accusamus quisquam nemo aliquid aspernatur iste, ut voluptatibus delectus quaerat ratione nam asperiores earum?</p>
+                <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </article>
+        <article>
+            <h2>Titre de l'article</h2>
+            <div class="metadata">Ecrit le 21/06/2019 à 1h21 dans la catégorie Apprentissage</div>
+            <div class="content">
+                <img src="http://placehold.it/350x150" alt="">
+                <p>Sit officiis, labore maiores recusandae asperiores repellendus odio id assumenda corrupti vel ex, mollitia rem.</p>
+                <p>Incidunt, numquam inventore voluptatibus qui fugiat labore! Id ipsum, tenetur quas ex numquam fuga nam!</p>
+                <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </article>
+
+    </section>
+{% endblock %}
