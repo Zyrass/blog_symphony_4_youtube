@@ -1,6 +1,84 @@
 Commande EMMET :
 (article>h2[Titre de l'article}+div.metadata{Ecrit le 21/06/2019 à 1h21 dans la catégorie Apprentissage}+div.content>img+(p>lorem15)*2+a.btn.btn-primary{Lire la suite})*3
 
+Site utile : http://placehold.it/350x150
+
+ORM = Object Relationnel Mapping (Doctrine) (Permet de faire du SQL sans jamais écrire de SQL !!!)
+    - Entity
+        Permet de représenter une table
+    - Manager
+        Permet de manipuler une ligne
+        Permet de faire du CRUD (Create Read Update Delete)
+    - Repository
+        Permet de faire des sélections
+         
+    --------------------------------------------------------------------------------------
+    - Les Migrations dans Symfony sont classé par fichiers dans un certain ordre !!
+    En gros il suffit d'envoyer des scripts a ces collègues afin qu'en 1s ils se retrouvent avec la même base de données.
+    Exemple :
+        - Migration #1
+            Je crée 2 tables
+        - Migration #2
+            Je modifie les champs d'une table
+            J'en crée une autre
+            J'en supprime une autre
+        - Migration  #3
+            Je supprime un champ d'une table
+            J'ajoute une relation entre deux tables
+    --------------------------------------------------------------------------------------
+    - Les Fixtures dans Symfony permet de créer des fausses données et peut-être exécuté à souhait !!
+    réutilisable par tout le monde !!
+
+     TOUT CA EN SEULEMENT 3 LIGNES DE COMMANDES !!!!!!!!!!!!
+
+    1 créer une base de donnée
+        a - Allez dans le fichier .env et tout en bas regarder la ligne DATABASE _URL et la modifier selon notre poste.
+            Exemple : DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+            Devient : DATABASE_URL=mysql://root:@127.0.0.1:3306/blog
+
+            php bin/console doctrine:database:create
+    2 Créer une table
+        php bin/console make:Entity
+            Permet de créer une classe Entité qui représente une table
+            Définir le nom de la classe Avec une Majuscule c'est une Classe exemple : Article
+            Saisir les infos VERSION DOCTRINE Pour s'aider avec le TYPE taper sur ?
+
+            /!\ a savoir que si je créer un champ en camelCase en base de donnée se sera automatiquement convertie en SQL soit par exempel : createdAt DEVIENT created_at
+
+    A CET INSTANT AUCUNE TABLE CREER EN BASE DE DONNEE. DONC Nous allons créer une migration afin que DOCTRINE ANALYSE LE CODE.
+
+        php bin/console make:migration
+            Permet de créer une migration SQL à partir des entités présentes
+
+    UNE FOIS LE CODE ANALYSER NOUS ALLONS EXPORTER LES MIGRATIONS
+        php bin/console doctrine:migrations:migrate
+            Lance les scripts de migratrions afin de mettre à jour la base.
+
+    --------------------------------------------------------------------------------------
+    - AJOUT DES FIXTURES NON INCLUS DE BASE DANS SYMFONY-
+        composer require orm-fixtures --dev
+
+    - Utilisation des fixtures
+        php bin/console make:fixtures
+        Et en nom on donnera pour notre exemple : ArticleFixtures
+
+    - Utiliser FAKER (A regarder la DOC) Sinon bidouiller dans le dossier DataFixtures le fichier ArticleFixtures
+        dans la méthode Load :
+            for ($i = 1; $i <= 10; $i++) {
+                $article = new Article(); // Ne pas oublier use App\Entity\Article
+                $article->setTitle("Titre de l'article n°$i")
+                        ->setContent("<p>Contenu de l'article n°$i</p>")
+                        ->setImage("http://placehold.it/600x150)
+                        ->setCreatedAt(new \DateTime()); // Permet d'utiliser DateTime en objet GLOBAL
+
+                $manager->persist($article);
+            }
+
+            $manager->flush(); // Permet avec flush d'envoyer réellement les données en SQL
+
+        Puis dans la commande php bin/console doctrine:fixtures:load
+    --------------------------------------------------------------------------------------
+
 CLI = Command Line Interface.
 Les 3 pilliers de Symfony 
     1 Les Controllers pour gérer les traitements
