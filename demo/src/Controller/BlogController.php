@@ -23,17 +23,18 @@ class BlogController extends AbstractController
     public function home()
     {
         return $this->render('blog/home.html.twig', [
-            "title" => "Bienvenue sur ce super site codé avec Symfony 4",
-            "age" => 35
+            'version' => 0.1,
+            'author'  => 'Alain Guillon',
+            'pseudo'  => 'Zyrass',
+            'age'     => 35
         ]);
     }
 
     /**
-     * @Route("/blog/article/12", name="blog_show")
+     * @Route("/blog/article/69", name="blog_show_article")
      */
     public function show()
     {
-        return $this->render('blog/show.html.twig');
+        return $this->render('/blog/show.html.twig');
     }
-
 }
