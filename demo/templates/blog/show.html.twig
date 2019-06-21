@@ -3,15 +3,11 @@
 {% block body %}
     <div class="container">
         <article>
-            <h1>Titre de l'article</h1>
+            <h1>{{ article.title }}</h1>
+            <div class="metadata">Écrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i') }}dans la catégorie Développement WEB</div>
             <div>
-                <img src="http://placehold.it/600x200" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur incidunt velit quos explicabo, distinctio fugiat cum ullam quas quis voluptates vitae esse, obcaecati aliquid impedit soluta dolorum amet iure optio.</p>
-                <hr>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita eos libero unde? Ab odit repellat quidem error ratione laudantium officiis ex aspernatur totam assumenda quo hic commodi esse iusto quam perferendis atque eius odio quasi maiores id voluptatem, pariatur architecto. Eos, amet. Cum quasi quia quas fugit similique corporis consequatur fuga asperiores exercitationem laborum repellendus accusantium sed vitae incidunt repudiandae nobis neque, delectus deleniti excepturi sapiente! Magnam deserunt, impedit quos reprehenderit blanditiis, corporis totam nobis quia itaque molestiae, repudiandae quaerat.</p>
-                <p>Illum magnam delectus ex eius iusto cupiditate adipisci! Illo consequatur similique cupiditate natus necessitatibus quidem dolorem soluta doloremque officiis eaque totam deleniti quos nemo tempora corrupti, quo veritatis dignissimos inventore magnam accusamus magni laboriosam itaque! Dignissimos magnam nihil dolorum error dolore, labore temporibus vel sed doloribus eos quos rerum maiores deleniti voluptatum, exercitationem accusamus! In aperiam deserunt nobis voluptas asperiores nesciunt, facilis nihil est laudantium et modi aut ea veritatis neque dolor ipsam distinctio rem sequi molestias praesentium tempore quas.</p>
-                <p>Maxime nam excepturi ratione repudiandae, facere harum debitis quos blanditiis iure placeat repellendus expedita. Optio tenetur, itaque quam et dolorem minima ullam ab sed illum sit iure repellendus modi, inventore beatae quo quisquam reiciendis cum soluta, sint impedit vero praesentium vel asperiores? Animi aspernatur reprehenderit minus, et maxime vero temporibus perferendis culpa magnam quasi laborum nihil ea dicta, quia necessitatibus ullam numquam totam voluptatibus iure eligendi consequatur cupiditate tenetur deleniti. Ab optio maxime necessitatibus debitis distinctio qui dicta, ad quos?</p>
-                <p>Quis, in? Molestias, quisquam harum eaque facilis cupiditate illo quia, accusamus iure quidem dolorum aspernatur esse autem molestiae illum consectetur odit id neque ratione ipsa maxime cum voluptatem. Necessitatibus eius beatae iure magnam autem accusamus est, eaque, corporis voluptates dicta tenetur rerum vitae praesentium consequatur aperiam officiis? Aliquam quisquam, ab voluptas deserunt maiores alias, quidem fuga tempora ducimus impedit pariatur. Adipisci dolor nobis voluptas quae reiciendis amet ex eligendi veritatis. Doloribus fugit, sed delectus ullam ea quas rerum debitis repudiandae?</p>
+                <img src="{{ article.image }}" alt="">
+                {{ article.content | raw }}
             </div>
         </article>
     </div>

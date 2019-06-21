@@ -1,38 +1,23 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Apprentissage de Symfony 4{% endblock %}
-
 {% block body %}
     <div class="container">
         <h1>Welcom on this Blog</h1>
         <hr>
-        <section class="article">
-            <article>
-                <h2>Titre de l'article</h2>
-                <div>
-                    <img src="http://placehold.it/600x200" alt="">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur incidunt velit quos explicabo, distinctio fugiat cum ullam quas quis voluptates vitae esse, obcaecati aliquid impedit soluta dolorum amet iure optio.</p>
-                    <a href="{{ path('blog_show_article') }}" class="btn btn-primary">En savoir plus</a>
-                </div>
-            </article>
-            <article>
-                <h2>Titre de l'article</h2>
-                <div>
-                    <img src="http://placehold.it/600x200" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque accusantium atque praesentium ducimus reprehenderit? Est, dolore. Maiores dolor porro totam vitae eaque vel aut nemo libero molestias atque! Recusandae, saepe!</p>
-                    <a href="{{ path('blog_show_article') }}" class="btn btn-primary">En savoir plus</a>
-                </div>
-            </article>
-            <article>
-                <h2>Titre de l'article</h2>
-                <div>
-                    <img src="http://placehold.it/600x200" alt="">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, maxime laboriosam labore cum voluptatibus ipsa illum, architecto pariatur qui, aspernatur distinctio id ullam culpa dolor magni explicabo cupiditate neque saepe!</p>
-                    <a href="{{ path('blog_show_article') }}" class="btn btn-primary">En savoir plus</a>
-                </div>
-            </article>
+        <section class="articles">
+            {% for article in articles %}
+                <article>
+                    <h2>{{ article.title }}</h2>
+                    <div class="metadata">Écrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Développement WEB</div>
+                    <div>
+                        <img src="{{ article.image }}" alt="Image de l'article n°{{ article.id }}">
+                        
+                        {{ article.content | raw}}
 
+                        <a href="{{ path('blog_show_article', {'id': article.id}) }}" class="btn btn-primary">En savoir plus...</a>
+                    </div>
+                </article>
+            {% endfor %}
         </section>
-
     </div>
 {% endblock %}
